@@ -6,13 +6,13 @@ import java.util.Scanner;
  * Hello world!
  *
  */
-public class Bee1001 {
+public class Main {
 	/**
 	 * @param x
 	 * @return
 	 */
 	public static String generateAnswer(int x) {
-		return "X = " + x + System.getProperty("new.line");
+		return "X = " + x + System.getProperty("line.separator");
 	}
 
 	/**
