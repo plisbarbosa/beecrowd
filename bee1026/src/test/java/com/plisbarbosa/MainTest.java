@@ -10,8 +10,9 @@ import org.junit.jupiter.api.Test;
 public class MainTest {
 	@Test
 	void shouldPrintCorrectAnswers() {
-		assertEquals("X = 19" + System.getProperty("line.separator"), Main.generateAnswer(Main.sum(10, 9)));
-		assertEquals("X = -6" + System.getProperty("line.separator"), Main.generateAnswer(Main.sum(-10, 4)));
-		assertEquals("X = 8" + System.getProperty("line.separator"), Main.generateAnswer(Main.sum(15, -7)));
+		assertEquals("2" + System.getProperty("line.separator"),
+				Main.generateAnswer(Main.doLogicalOperationEclusiveOr(4, 6)));
+		assertEquals("15" + System.getProperty("line.separator"),
+				Main.generateAnswer(Main.doLogicalOperationEclusiveOr(6, 9)));
 	}
 }
