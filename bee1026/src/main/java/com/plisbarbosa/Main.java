@@ -12,7 +12,7 @@ public class Main {
 	 * @return
 	 */
 	public static String generateAnswer(int x) {
-		return x + System.getProperty("line.separator");
+		return "X = " + x + System.getProperty("line.separator");
 	}
 
 	/**
@@ -27,7 +27,7 @@ public class Main {
 
 		scanner.close();
 
-		System.out.print(generateAnswer(doLogicalOperationEclusiveOr(a, b)));
+		System.out.print(generateAnswer(sum(a, b)));
 	}
 
 	/**
@@ -35,7 +35,7 @@ public class Main {
 	 * @param b
 	 * @return
 	 */
-	public static int doLogicalOperationEclusiveOr(int a, int b) {
-		return a ^ b;
+	public static int sum(int a, int b) {
+		return a + b;
 	}
 }
