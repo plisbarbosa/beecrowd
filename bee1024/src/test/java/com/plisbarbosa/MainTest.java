@@ -10,9 +10,16 @@ import org.junit.jupiter.api.Test;
 public class MainTest {
 	@Test
 	void shouldPrintCorrectAnswers() {
-		assertEquals("2" + System.getProperty("line.separator"),
-				Main.generateAnswer(Main.doExclusiveOr(4, 6)));
-		assertEquals("15" + System.getProperty("line.separator"),
-				Main.generateAnswer(Main.doExclusiveOr(6, 9)));
+		String output = Main.encryptLetters("Texto #3");
+
+		assertEquals("Wh{wr #3", output);
+
+		output = Main.reverseString(output);
+
+		assertEquals("3# rw{hW", output);
+
+		output = Main.encryptLastHalf(output);
+
+		assertEquals("3# rvzgV", output);
 	}
 }

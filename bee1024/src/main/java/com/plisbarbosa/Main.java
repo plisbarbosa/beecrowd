@@ -4,11 +4,57 @@ import java.util.Scanner;
 
 public class Main {
 	/**
-	 * @param x
+	 * @param text
 	 * @return
 	 */
-	public static String generateAnswer(long x) {
-		return x + System.getProperty("line.separator");
+	public static String encryptLastHalf(String text) {
+		char[] encryptedCharacters = text.toCharArray();
+
+		int length = encryptedCharacters.length;
+
+		// Last half
+		for (int i = length / 2; i < length; i++) {
+			int characterDecimal = encryptedCharacters[i];
+
+			characterDecimal--;
+
+			encryptedCharacters[i] = (char) characterDecimal;
+		}
+
+		return new String(encryptedCharacters);
+	}
+
+	/**
+	 * @param text
+	 * @return
+	 */
+	public static String encryptLetters(String text) {
+		char[] encryptedCharacters = text.toCharArray();
+
+		int length = encryptedCharacters.length;
+
+		for (int i = 0; i < length; i++) {
+			int characterDecimal = encryptedCharacters[i];
+
+			// Capital letters
+			if ((characterDecimal >= 65 && characterDecimal <= 90)
+					// Small letters
+					|| (characterDecimal >= 97 && characterDecimal <= 122)) {
+				characterDecimal = characterDecimal + 3;
+
+				encryptedCharacters[i] = (char) characterDecimal;
+			}
+		}
+
+		return new String(encryptedCharacters);
+	}
+
+	/**
+	 * @param text
+	 * @return
+	 */
+	public static String getAnswer(String text) {
+		return text + System.getProperty("line.separator");
 	}
 
 	/**
@@ -18,18 +64,33 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 
 		while (scanner.hasNext()) {
-			System.out.print(generateAnswer(doExclusiveOr(scanner.nextLong(), scanner.nextLong())));
+			String input = scanner.nextLine();
+
+			if (input.chars().allMatch(character -> Character.isDigit(character))) {
+				int linesNumber = Integer.valueOf(input);
+
+				for (int i = 1; i <= linesNumber; i++) {
+					String text = scanner.nextLine();
+
+					text = encryptLetters(text);
+
+					text = reverseString(text);
+
+					text = encryptLastHalf(text);
+
+					System.out.print(getAnswer(text));
+				}
+			}
 		}
 
 		scanner.close();
 	}
 
 	/**
-	 * @param a
-	 * @param b
+	 * @param text
 	 * @return
 	 */
-	public static long doExclusiveOr(long a, long b) {
-		return a ^ b;
+	public static String reverseString(String text) {
+		return new StringBuilder(text).reverse().toString();
 	}
 }
