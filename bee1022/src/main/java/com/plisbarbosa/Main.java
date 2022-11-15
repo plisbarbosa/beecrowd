@@ -11,7 +11,6 @@ public class Main {
 	public static String getAnswer(String input) {
 		String inputWithoutSpaces = input.replaceAll("\\s", "");
 
-		// Eg. {"", "/", "+", "/"}
 		String opCharacter = inputWithoutSpaces.replaceAll("\\d", "").substring(1, 2);
 
 		String[] numbers = inputWithoutSpaces.split("\\D");
